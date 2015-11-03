@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/jobXML_1_0.xsd" id="Multi" restartable="true" version="1.0">
+	<step id="idvalue0">
+		<chunk>
+			<reader ref="myReader">
+				<properties >
+					<property name="inputSize" value="50"/>
+				</properties>
+			</reader>
+			<writer ref="aggregateWriter">
+				<properties >
+					<property name="childIds" value="C1, C2, C3, C4"/>
+					<property name="childClassNameDefault" value="mypkg.ChildWriter"/>
+					<property name="org" value="PAYROLL"/>
+					<property name="separatorDefault" value=","/>
+					<property name="separatorOverrides" value="C2=;, C4=:"/>		
+					<property name="chunkHeader" value="ROW: , ROW: , NEXT: , NEXT: "/>			
+					<property name="fileName" value="c1.txt,c2.txt,c3.txt,c4.txt"/>
+				</properties>
+			</writer>
+		</chunk>
+	</step>
+</job>
